@@ -37,39 +37,6 @@ Use of xml file to setup logging:
                             <name> just a name
                             <dev_cla> none if omitted, outlet or switch (only for switch), doorbell or button (only for event)
                     <device2> ... -->
-                
-  jDeviceString.AddArray("ids", arraystr, 1);
-  jDeviceString.AddItem("name", devName);
-  jDeviceString.AddItem("mf", String(dev_mf));
-  jDeviceString.AddItem("mdl", String(dev_mdl));                      
-     
-  // binary_sensor                   
-                        
-  jString.AddItem("name", ha_up.name);
-  jString.AddItem("~", settings.getString(settings.mainTopic));
-  jString.AddItem("cmd_t", "~/up");
-  jString.AddItem("pl_prs", "1");
-  jString.AddItem("uniq_id", arraystr[1] + us(ha_up.id));
-  jString.AddItem("dev", jDeviceString);
-  //logger.printf(jString.GetJson());
-
-  topic = joinTopic(joinTopic(joinTopic(settings.getString(settings.haTopic), ha_up.type), devName + us(ha_up.id)), ha_config);
-  client.publish(topic.c_str(), jString.GetJson().c_str(), true);
-  
-  // switch
-  
-  jString.AddItem("name", ha_blind.name);
-  jString.AddItem("~", settings.getString(settings.mainTopic));
-  jString.AddItem("dev_cla", ha_blind.cla);
-  jString.AddItem("cmd_t", "~/updown");
-  jString.AddItem("pl_on", "1");
-  jString.AddItem("pl_off", "0"); 
-  jString.AddItem("uniq_id", arraystr[1] + us(ha_blind.id));
-  jString.AddItem("dev", jDeviceString);
-  //logger.printf(jString.GetJson());
-
-  topic = joinTopic(joinTopic(joinTopic(settings.getString(settings.haTopic), ha_blind.type), devName + us(ha_blind.id)), ha_config);
-  client.publish(topic.c_str(), jString.GetJson().c_str(), true);
 
 Runs as service:
 
