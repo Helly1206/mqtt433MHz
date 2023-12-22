@@ -1,3 +1,9 @@
+mqtt433mhz (0.82) stable; urgency=low
+
+  * Make feedback value retained
+
+ -- Helly1206 <hellyrulez@hotmail.com>  Thu, 14 Dec 2023 20:27:45 +0100
+
 mqtt433mhz (0.81) stable; urgency=low
 
   * Added option for feeding back status via mqtt

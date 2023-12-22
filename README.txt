@@ -1,4 +1,4 @@
-mqtt433MHz v0.8.1
+mqtt433MHz v0.8.2
 
 mqtt433MHz - 433 MHz to MQTT translator
 ========== = ======= == ==== ==========

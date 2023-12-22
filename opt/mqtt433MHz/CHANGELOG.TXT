@@ -1,3 +1,6 @@
+[B]0.8.2[/B]
+- Make feedback value retained
+
 [B]0.8.1[/B]
 - Added option for feeding back status via mqtt
 

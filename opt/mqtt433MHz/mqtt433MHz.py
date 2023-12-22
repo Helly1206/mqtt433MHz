@@ -31,7 +31,7 @@ except ImportError:
 #########################################################
 
 ####################### GLOBALS #########################
-VERSION      = "0.81"
+VERSION      = "0.82"
 XML_FILENAME = "mqtt433MHz.xml"
 ENCODING     = 'utf-8'
 CONFIG       = "config"
@@ -410,11 +410,13 @@ class mqtt433MHz(object):
                 syscode, groupcode, devicecode, val = self.array2code(array)
                 for key, input in self.get433Inputs().items():
                     if (input["SysCode"] == syscode) and (input["GroupCode"] == groupcode) and (input["DeviceCode"] == devicecode):
+                        rtn = RETAIN
                         if input["feedback"]:
                             value = str(val)
                         else:
                             value = json.dumps({"event_type": str(val)})
-                        self.client.publish(input["stat"], value, QOS, RETAINEVENT) # value doesn't matter I geuss, retain should be false 
+                            rtn = RETAINEVENT
+                        self.client.publish(input["stat"], value, QOS, rtn) # value doesn't matter I geuss, retain should be false 
                         if self.debug:
                             print("433MHz: received: SysCode: " + str(syscode) + ", GroupCode: " + str(groupcode) + ", DeviceCode: " + str(devicecode), " value: " + str(val))
                             print("MQTT: publish event: " + input["stat"] + "/" + value)

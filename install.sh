@@ -44,12 +44,12 @@ then
 	echo "$NAME Deleting compiled files in install folder"
 	py3clean .
 	rm -f ./*.deb
-	rm -rf "$DEBFOLDER"/$NAME
+	rm -rf "$DEBFOLDER"/${NAME,,}
 	rm -rf "$DEBFOLDER"/.debhelper
     rm -f "$DEBFOLDER"/debhelper-build-stamp
 	rm -f "$DEBFOLDER"/files
 	rm -f "$DEBFOLDER"/files.new
-	rm -f "$DEBFOLDER"/$NAME.*
+	rm -f "$DEBFOLDER"/${NAME,,}.*
 elif [ "$1" == "-d" ] || [ "$1" == "-D" ]
 then
 	echo "$NAME build debian package"
